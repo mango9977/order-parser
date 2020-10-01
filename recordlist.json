@@ -1,0 +1,14 @@
+{"orderId":15,"amount":10,"currency":"EUR","comment":"оплата заказа"}
+{"orderId":11,"amount":102,"currency":"USD","comment":"оплата заказа"}
+{"orderId":12,"amount":1033,"currency":"RUR","comment":"оплата заказа"}
+{"orderId":10,"amount":1099,"currency":"USD","comment":"оплата заказа"}
+{"orderId":1,"amount":11345,"currency":"RUR","comment":"оплата заказа"}
+{"orderId":3,"amount":109,"currency":"EUR","comment":"оплата заказа"}
+{"orderId":101,"amount":98,"currency":"RUR","comment":"оплата заказа"}
+{"orderId":55,"amount":77,"currency":"USD","comment":"оплата заказа"}
+{"orderId":99,"amount":"AB","currency":"USD","comment":"оплата заказа"}
+{"orderId":13,"amount":145,"currency":"USD,","comment":"оплата заказа"}
+{"orderId":14,"amount":121,"currency":"USD","comment":"оплата заказа"}
+{"orderId":24,"amount":456,"currency":"USD","comment":"оплата заказа"}
+{"orderId":19,"amount":12300,"currency":"EUR","comment":"оплата заказа"}
+{"orderId":37,"amount":5000,"currency":"RUR","comment":"оплата заказа"}
