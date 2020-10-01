@@ -38,7 +38,8 @@ public class ParserServiceFromCSV implements ParserService {
     AtomicBoolean interrupt = new AtomicBoolean(false);
     AtomicInteger lineCount;
     Exchanger<OrderDTO> exchanger = new Exchanger<>();
-    List<String> dtoStore=new ArrayList<>();
+    List<String> dtoStore = new ArrayList<>();
+    static final String dlm = "\"";
 
     @Override
     public List<String> parse(List<String> order, String fileName) {
@@ -73,8 +74,9 @@ public class ParserServiceFromCSV implements ParserService {
                     orderDTO.setResult("ОК");
                     orderDTO.setFilename(fileName);
                     exchanger.exchange(orderDTO);
-                } catch (NumberFormatException | InterruptedException e) {
-                    StringBuilder sb = new StringBuilder("{" + record);
+                } catch (IllegalArgumentException | InterruptedException e) {
+                    StringBuilder sb = new StringBuilder("{");
+                    sb.append(fillBlockResult(orderDTO));
                     sb.append(",").append(dlm + "filename" + dlm + ":").append(dlm + fileName + dlm)
                             .append("," + dlm + "line" + dlm + ":").append(cnt)
                             .append("," + dlm + "result" + dlm + ":" + dlm + e.getMessage() + dlm + "}");
@@ -112,5 +114,26 @@ public class ParserServiceFromCSV implements ParserService {
 
         }
         return dtoStore;
+    }
+
+    private String fillBlockResult(OrderDTO orderDTO) {
+        StringBuilder sb = new StringBuilder();
+        if (orderDTO.getId() != null) {
+            sb.append(dlm + "orderId:" + dlm).append(orderDTO.getId()).append(",");
+        } else sb.append(dlm + "orderId:" + dlm).append("null,");
+
+        if (orderDTO.getAmount() != null) {
+            sb.append(dlm + "amount:" + dlm).append(orderDTO.getAmount()).append(",");
+        } else sb.append(dlm + "amount:" + dlm).append("null,");
+
+        if (orderDTO.getCurrency() != null) {
+            sb.append(dlm + "currency:" + dlm).append(orderDTO.getCurrency()).append(",");
+        } else sb.append(dlm + "currency:" + dlm).append("null,");
+
+        if (orderDTO.getComment() != null) {
+            sb.append(dlm + "comment:" + dlm).append(orderDTO.getComment()).append(",");
+        } else sb.append(dlm + "comment:" + dlm).append("null,");
+
+        return sb.toString();
     }
 }

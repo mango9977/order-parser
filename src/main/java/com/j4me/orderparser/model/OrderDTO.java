@@ -9,9 +9,9 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderDTO {
     @JsonProperty("orderId")
-    long id;
+    Long id;
     @JsonProperty("amount")
-    int amount;
+    Integer amount;
     @JsonProperty("currency")
     String currency;
     @JsonProperty("comment")
@@ -19,7 +19,7 @@ public class OrderDTO {
     @JsonProperty("filename")
     String filename;
     @JsonProperty("line")
-    long line;
+    Integer line;
     @JsonProperty("result")
     String result;
 
